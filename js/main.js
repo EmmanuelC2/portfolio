@@ -60,15 +60,23 @@ document.addEventListener('click', (e) => {
     
 });
 
-const fsuSlideShowBtnDotContainer = document.getElementById('fsu-slideshow-btn-dot-container');
-const fsuSlideShowContainer = document.getElementById('fsu-slideshow-container');
-const slides = fsuSlideShowContainer.querySelectorAll(".slide");
-const dots = fsuSlideShowBtnDotContainer.querySelectorAll(".dot");
-const dotsContainer = fsuSlideShowBtnDotContainer.querySelector('.dots-container');
+const fsuSlideShowBtnDotContainer = [document.getElementById('fsu-slideshow-btn-dot-container-0'),document.getElementById('fsu-slideshow-btn-dot-container-1')];
+const fsuSlideShowContainer = [document.getElementById('fsu-slideshow-container-0'), document.getElementById('fsu-slideshow-container-1')];
+let slides = '';
+let dots = '';
+
 let currentSlide = 0;
 
-console.log(dots)
 function showSlide(index){
+
+    for(let i = 0; i < 2; i++){
+        if(getComputedStyle(fsuSlideShowBtnDotContainer[i]).display != 'none'){
+            dots = fsuSlideShowBtnDotContainer[i].querySelectorAll(".dot");
+            slides = fsuSlideShowContainer[i].querySelectorAll(".slide");
+            break;
+        }
+    }
+    console.log("Not on switch: ", currentSlide);
     slides[currentSlide].style.display='none';
     dots[currentSlide].classList.remove('active');
 
@@ -87,46 +95,4 @@ function prevSlide(){
 }
 
 showSlide(currentSlide);
-//setInterval(nextSlide, 10000);
 
-function slideShowWindowResize(){
-    
-    if(window.innerWidth <= 1100){
-        const currentSlideElement = slides[0];
-        const ul = currentSlideElement.querySelector('ul');
-        const liElements = currentSlideElement.querySelectorAll('li');
-
-        if(liElements.length >= 3){
-            const newSlide = document.createElement('div');
-            const newUl = document.createElement('ul');
-            const newDot = document.createElement('span');
-            
-            newSlide.classList.add('slide');
-            newUl.classList.add('course-list');
-            newDot.classList.add('dot');
-            newDot.onclick = () => currentSlide(5);
-
-            fsuSlideShowContainer.appendChild(newSlide);
-            dotsContainer.appendChild(newDot);
-        }else{
-            return;
-        }
-    }
-
-    if(window.innerWidth <= 780){
-        const currentSlideElement = slides[0];
-        const ul = currentSlideElement.querySelector('ul');
-        const liElements = ul.querySelectorAll('li');
-
-        if(liElements.length >= 2){
-            
-        }else{
-            return;
-        }
-    }
-
-}
-
-slideShowWindowResize();
-
-window.addEventListener('resize', slideShowWindowResize);
