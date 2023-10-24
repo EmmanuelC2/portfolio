@@ -230,7 +230,7 @@ a{
 
 #cos-container{
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding:50px;
@@ -240,7 +240,7 @@ a{
 }
 
 #cos-container p{
-    width:30%;
+    width:100%;
 }
 
 #cos-container img{
@@ -248,9 +248,28 @@ a{
     height:250px;
 }
 
+#cos-slideshow-btn-dot-container-0{
+    position:relative;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cos-slideshow-container-0{
+    position:relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    overflow: hidden;
+    width: 80%;
+    height: 650px;
+    border: 1px solid white;
+}
+
 #fsu-container{
     display:flex;
-    flex-direction:row-reverse;
+    flex-direction:column;
     align-items: center;
     justify-content: center;
     padding:50px;
@@ -260,7 +279,7 @@ a{
 }
 
 #fsu-container p{
-    width:30%;
+    width:100%;
 }
 
 #fsu-container img{
@@ -278,6 +297,9 @@ a{
 #fsu-slideshow-btn-dot-container-1{
     display:none;
 }
+#fsu-slideshow-btn-dot-container-2{
+    display: none;
+}
 
 #fsu-slideshow-container-0{
     position:relative;
@@ -290,6 +312,9 @@ a{
     border: 1px solid white;
 }
 #fsu-slideshow-container-1{
+    display:none;
+}
+#fsu-slideshow-container-2{
     display:none;
 }
 
@@ -317,6 +342,8 @@ a{
     flex-direction: row;
     flex:1 1 33%;
     justify-content: center;
+    padding: 0px;
+    margin: 0px;
 }
 
 .course-list li{
@@ -369,7 +396,6 @@ a{
     top:100%;
     transform: translateY(-100%);
 }
-
 .dot{
     display:inline-block;
     width:10px;
@@ -379,7 +405,6 @@ a{
     margin:0 8px;
     cursor: pointer;
 }
-
 .dot.active{
     background-color: teal;
 }
@@ -548,6 +573,9 @@ a{
         justify-content: center;
         align-items: center;
     }
+    #fsu-slideshow-btn-dot-container-2{
+        display: none;
+    }
  
     #fsu-slideshow-container-0{
         display: none;
@@ -559,8 +587,15 @@ a{
         align-content: center;
         overflow: hidden;
         width: 80%;
-        height: 650px;
+        height: 750px;
         border: 1px solid white;
+    }
+    #fsu-slideshow-container-2{
+        display:none;
+    }
+
+    .course-list li {
+        width: 50%;
     }
 
     /* Contact Section */
@@ -684,6 +719,59 @@ a{
     #fsu-container img{
         width:250px;
         height:150px;
+    }
+
+    #fsu-slideshow-btn-dot-container-0{
+        display: none;
+    }
+    #fsu-slideshow-btn-dot-container-1{
+        display: none;
+    }
+    #fsu-slideshow-btn-dot-container-2{
+        position:relative;
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+ 
+    #fsu-slideshow-container-0{
+        display: none;  
+    }
+    #fsu-slideshow-container-1{
+        display:none;
+    }
+    #fsu-slideshow-container-2{
+        position:relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        overflow: hidden;
+        width: 80%;
+        height: 750px;
+        border: 1px solid white;
+        
+    }
+    
+    .course-list li {
+        width: 100%;
+    }
+
+    #next-slide{
+        right: 5px;
+    }
+    #prev-slide{
+        left: 5px;
+    }
+
+    .dots-container{
+        flex-wrap:wrap;
+        justify-content: center;
+        margin-top: 25px;
+    }
+    .dot {
+        display: block;
+        margin-top:3px;
     }
 
     /* Project Section */

@@ -60,39 +60,117 @@ document.addEventListener('click', (e) => {
     
 });
 
-const fsuSlideShowBtnDotContainer = [document.getElementById('fsu-slideshow-btn-dot-container-0'),document.getElementById('fsu-slideshow-btn-dot-container-1')];
-const fsuSlideShowContainer = [document.getElementById('fsu-slideshow-container-0'), document.getElementById('fsu-slideshow-container-1')];
-let slides = '';
-let dots = '';
+//current brute force solution? REFACTOR!
+const cosSlideShowBtnDotContainer0 = document.getElementById('cos-slideshow-btn-dot-container-0');
+const cosSlideShowContainer0 = document.getElementById('cos-slideshow-container-0');
+const cosDots0  = cosSlideShowBtnDotContainer0.querySelectorAll(".dot");
+const cosSlides0 = cosSlideShowContainer0.querySelectorAll(".slide");
+let cosCurrentSlide0 = 0;
 
-let currentSlide = 0;
+function cosShowSlide0(index){
 
-function showSlide(index){
+    cosSlides0[cosCurrentSlide0].style.display='none';
+    cosDots0[cosCurrentSlide0].classList.remove('active');
 
-    for(let i = 0; i < 2; i++){
-        if(getComputedStyle(fsuSlideShowBtnDotContainer[i]).display != 'none'){
-            dots = fsuSlideShowBtnDotContainer[i].querySelectorAll(".dot");
-            slides = fsuSlideShowContainer[i].querySelectorAll(".slide");
-            break;
-        }
-    }
-    console.log("Not on switch: ", currentSlide);
-    slides[currentSlide].style.display='none';
-    dots[currentSlide].classList.remove('active');
+    cosCurrentSlide0 = (index + cosSlides0.length) % cosSlides0.length;
 
-    currentSlide = (index + slides.length) % slides.length;
-
-    slides[currentSlide].style.display= 'flex';
-    dots[currentSlide].classList.add('active');
+    cosSlides0[cosCurrentSlide0].style.display= 'flex';
+    cosDots0[cosCurrentSlide0].classList.add('active');
+    
 }
 
-function nextSlide(){
-    showSlide(currentSlide+1);
+function cosNextSlide0(){
+    cosShowSlide0(cosCurrentSlide0+1);
 }
 
-function prevSlide(){
-    showSlide(currentSlide-1);
+function cosPrevSlide0(){
+    cosShowSlide0(cosCurrentSlide0-1);
 }
 
-showSlide(currentSlide);
+cosShowSlide0(cosCurrentSlide0);
 
+const fsuSlideShowBtnDotContainer0 = document.getElementById('fsu-slideshow-btn-dot-container-0')
+const fsuSlideShowContainer0 = document.getElementById('fsu-slideshow-container-0');
+const slides0 = fsuSlideShowContainer0.querySelectorAll(".slide");
+const dots0 = fsuSlideShowBtnDotContainer0.querySelectorAll(".dot");
+let currentSlide0 = 0;
+
+function showSlide0(index){
+
+    slides0[currentSlide0].style.display='none';
+    dots0[currentSlide0].classList.remove('active');
+
+    currentSlide0 = (index + slides0.length) % slides0.length;
+
+    slides0[currentSlide0].style.display= 'flex';
+    dots0[currentSlide0].classList.add('active');
+    
+}
+
+function nextSlide0(){
+    showSlide0(currentSlide0+1);
+}
+
+function prevSlide0(){
+    showSlide0(currentSlide0-1);
+}
+
+showSlide0(currentSlide0);
+
+const fsuSlideShowBtnDotContainer1 = document.getElementById('fsu-slideshow-btn-dot-container-1');
+const fsuSlideShowContainer1 = document.getElementById('fsu-slideshow-container-1');
+const dots1  = fsuSlideShowBtnDotContainer1.querySelectorAll(".dot");
+const slides1 = fsuSlideShowContainer1.querySelectorAll(".slide");
+let currentSlide1 = 0;
+
+function showSlide1(index){
+
+    slides1[currentSlide1].style.display='none';
+    dots1[currentSlide1].classList.remove('active');
+
+    currentSlide1= (index + slides1.length) % slides1.length;
+
+    slides1[currentSlide1].style.display= 'flex';
+    dots1[currentSlide1].classList.add('active');
+    
+}
+
+function nextSlide1(){
+    showSlide1(currentSlide1+1);
+}
+
+function prevSlide1(){
+    showSlide1(currentSlide1-1);
+}
+
+const fsuSlideShowBtnDotContainer2 = document.getElementById('fsu-slideshow-btn-dot-container-2');
+const fsuSlideShowContainer2 = document.getElementById('fsu-slideshow-container-2');
+const dots2  = fsuSlideShowBtnDotContainer2.querySelectorAll(".dot");
+const slides2 = fsuSlideShowContainer2.querySelectorAll(".slide");
+let currentSlide2 = 0;
+
+function showSlide2(index){
+
+    slides2[currentSlide2].style.display='none';
+    dots2[currentSlide2].classList.remove('active');
+
+    currentSlide2 = (index + slides2.length) % slides2.length;
+
+    slides2[currentSlide2].style.display= 'flex';
+    dots2[currentSlide2].classList.add('active');
+    
+}
+
+function nextSlide2(){
+    showSlide2(currentSlide2+1);
+}
+
+function prevSlide2(){
+    showSlide2(currentSlide2-1);
+}
+
+showSlide2(currentSlide2);
+
+showSlide1(currentSlide1);
+
+showSlide0(currentSlide0);
