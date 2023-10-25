@@ -255,6 +255,12 @@ a{
     justify-content: center;
     align-items: center;
 }
+#cos-slideshow-btn-dot-container-1{
+    display:none;
+}
+#cos-slideshow-btn-dot-container-2{
+    display:none;
+}
 
 #cos-slideshow-container-0{
     position:relative;
@@ -265,6 +271,12 @@ a{
     width: 80%;
     height: 650px;
     border: 1px solid white;
+}
+#cos-slideshow-container-1{
+    display: none;
+}
+#cos-slideshow-container-2{
+    display:none;
 }
 
 #fsu-container{
@@ -552,6 +564,39 @@ a{
         height:200px;
     }
 
+    #cos-slideshow-btn-dot-container-0{
+        display:none;
+        
+    }
+    #cos-slideshow-btn-dot-container-1{
+        position:relative;
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #cos-slideshow-btn-dot-container-2{
+        display:none;
+    }
+
+    #cos-slideshow-container-0{
+        display: none;
+    }
+    #cos-slideshow-container-1{
+        
+        position:relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        overflow: hidden;
+        width: 80%;
+        height: 650px;
+        border: 1px solid white;
+    }
+    #cos-slideshow-container-2{
+        display:none;
+    }
+
     #fsu-container{width:85%;}
 
     #fsu-container p{
@@ -707,6 +752,37 @@ a{
         height:150px;
     }
 
+    #cos-slideshow-btn-dot-container-0{
+        display:none;
+    }
+    #cos-slideshow-btn-dot-container-1{
+        display:none;
+    }
+    #cos-slideshow-btn-dot-container-2{
+        position:relative;
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #cos-slideshow-container-0{
+        display: none;
+    }
+    #cos-slideshow-container-1{
+        display: none;
+    }
+    #cos-slideshow-container-2{
+        position:relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        overflow: hidden;
+        width: 80%;
+        height: 750px;
+        border: 1px solid white;
+    }
+
     #fsu-container{
         width:100%;
         flex-direction: column;
@@ -833,5 +909,4 @@ a{
     .content-container {
         margin-bottom:650px;
     }
-    
 }

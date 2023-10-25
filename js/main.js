@@ -87,6 +87,60 @@ function cosPrevSlide0(){
     cosShowSlide0(cosCurrentSlide0-1);
 }
 
+const cosSlideShowBtnDotContainer1 = document.getElementById('cos-slideshow-btn-dot-container-1');
+const cosSlideShowContainer1 = document.getElementById('cos-slideshow-container-1');
+const cosDots1  = cosSlideShowBtnDotContainer1.querySelectorAll(".dot");
+const cosSlides1 = cosSlideShowContainer1.querySelectorAll(".slide");
+let cosCurrentSlide1 = 0;
+
+function cosShowSlide1(index){
+
+    cosSlides1[cosCurrentSlide1].style.display='none';
+    cosDots1[cosCurrentSlide1].classList.remove('active');
+
+    cosCurrentSlide1 = (index + cosSlides1.length) % cosSlides1.length;
+
+    cosSlides1[cosCurrentSlide1].style.display= 'flex';
+    cosDots1[cosCurrentSlide1].classList.add('active');
+    
+}
+
+function cosNextSlide1(){
+    cosShowSlide1(cosCurrentSlide1+1);
+}
+
+function cosPrevSlide1(){
+    cosShowSlide1(cosCurrentSlide1-1);
+}
+
+const cosSlideShowBtnDotContainer2 = document.getElementById('cos-slideshow-btn-dot-container-2');
+const cosSlideShowContainer2 = document.getElementById('cos-slideshow-container-2');
+const cosDots2 = cosSlideShowBtnDotContainer2.querySelectorAll(".dot");
+const cosSlides2 = cosSlideShowContainer2.querySelectorAll(".slide");
+let cosCurrentSlide2 = 0;
+
+function cosShowSlide2(index){
+
+    cosSlides2[cosCurrentSlide2].style.display='none';
+    cosDots2[cosCurrentSlide2].classList.remove('active');
+
+    cosCurrentSlide2 = (index + cosSlides2.length) % cosSlides2.length;
+
+    cosSlides2[cosCurrentSlide2].style.display= 'flex';
+    cosDots2[cosCurrentSlide2].classList.add('active');
+    
+}
+
+function cosNextSlide2(){
+    cosShowSlide2(cosCurrentSlide2+1);
+}
+
+function cosPrevSlide2(){
+    cosShowSlide2(cosCurrentSlide2-1);
+}
+
+cosShowSlide2(cosCurrentSlide2);
+cosShowSlide1(cosCurrentSlide1);
 cosShowSlide0(cosCurrentSlide0);
 
 const fsuSlideShowBtnDotContainer0 = document.getElementById('fsu-slideshow-btn-dot-container-0')
@@ -170,7 +224,5 @@ function prevSlide2(){
 }
 
 showSlide2(currentSlide2);
-
 showSlide1(currentSlide1);
-
 showSlide0(currentSlide0);
