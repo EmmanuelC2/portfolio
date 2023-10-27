@@ -1,0 +1,286 @@
+@font-face {
+    font-family: TekturM;
+    src: url(/dev/css/fonts/Tektur-Medium.ttf);
+}
+
+html{
+    height: 100%;
+    min-height: 100%;
+    scroll-padding-top:80px;
+}
+
+body {
+    height: 100%;
+    min-height: 100%;
+    background-color:black;
+    margin:0%;
+}
+
+/* Navigation Section */
+
+#top-bar {
+    height: 60px;
+    width:100%;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    background-color: white;
+    position:sticky;
+    top:0px;
+    box-shadow: 4px 4px 10px 0 lightblue;
+}
+
+.name {
+    font-family: TekturM;
+    flex-grow:6;
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-left:10%;
+    width:320px;
+    position:relative;
+    color:black;
+}
+
+#nav-web{
+    flex-grow:4;
+}
+
+#hamburger-toggle{
+    display:none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar{
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+#link-list{
+    display:flex;
+    list-style:none;
+    line-height: 55px;
+    height: 100%;
+    margin:0px;
+}
+
+.link{
+    border-left:solid 0.1px gray;
+    font-family: TekturM;
+    color:black;
+    text-align: center;
+    display:inline-block;
+    width:150px;
+    background-color: rgb(95, 95, 95,0.3);
+    height:100%;
+}
+
+.link:hover{
+    background-color: gray;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Content Section */
+
+#content{
+    height:100%;
+    width:100%;
+}
+
+#content h1 {
+    font-family: TekturM;
+    text-align: center;
+}
+
+.content-container {
+    font-family: TekturM;
+    font-size: 20px; 
+    color:white;
+    
+    width:80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: -1px 0px 15px white, -1px 0px 15px white;
+}
+
+/* Project Section */
+
+.project-info{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#embedded-video{
+    width:800px;
+    height:550px;
+}
+
+.project-info h3{
+    margin-left: 10px;
+}
+
+.project-info h4{
+    margin-left: 100px;
+}
+
+.project-info p{
+    width:80%;
+    word-spacing: 1px;
+    line-height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.paragraph-headings{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+@media only screen and (min-width: 796px) and (max-width: 1100px){
+
+    /* Navigation Bar */
+    
+    .name {
+        
+        font-family: TekturM;
+        flex-grow:2;
+        margin-top:auto;
+        margin-bottom:auto;
+        margin-left:2.2%;
+        width:320px;
+        position:relative;
+        color:black;
+    }
+
+    #nav-web{
+        flex-grow:4;
+    }
+
+    .link{
+        border-left:solid 0.1px gray;
+        font-family: TekturM;
+        color:black;
+        text-align: center;
+        display:inline-block;
+        width:100px;
+        background-color: rgb(95, 95, 95,0.3);
+        height:100%;
+    }
+
+    /* Project Section */
+    #embedded-video{
+        width:600px;
+        height:380px;
+    }
+
+}
+
+@media only screen and (max-width: 796px){
+
+    /* Navigation Section */
+    .name {
+        font-family: TekturM;
+        font-size:110%;
+        flex-grow:3;
+        width:200px;
+        margin-top:auto;
+        margin-bottom:auto;
+        margin-left:1%;
+        position:relative;
+        color:black;
+        
+    }
+
+    #nav-web{
+        flex-grow:4;
+    }
+
+    #link-list{
+        list-style: none;
+        padding: 0;
+        display:none;
+        flex-direction: column;
+        width:190px;
+        height:303px;
+        background-color: white;
+        position:fixed;
+        top:38%;
+        left: 0;
+        bottom:0;
+        transition: left 5s;
+        border-top-right-radius: 5%;
+        border-bottom-right-radius: 5%;
+        border-right: solid 0.1px gray;
+        box-shadow: 0 0 10px lightblue, 0 0 20px lightblue;
+    }
+
+    #link-list a{
+        margin-top:15px;
+    }
+
+    .link{
+        border-top:solid 0.1px gray;
+        border-bottom:solid 0.1px gray;
+        font-family: TekturM;
+        color:black;
+        text-align: center;
+        display:inline-block;
+        width:190px;
+        background-color: rgb(95, 95, 95,0.3);
+        height:100%;
+    }
+
+    #hamburger-toggle{
+        display:flex;
+        margin:15px;
+        align-items: flex-end;
+    }
+
+    #link-list.active{
+        display:flex;
+    }
+    
+    #hamburger-toggle.active .bar:nth-child(1){
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    #hamburger-toggle.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    #hamburger-toggle.active .bar:nth-child(3){
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Project Section */
+    
+    #embedded-video{
+        width:225px;
+        height:500px;
+    }
+
+    #paragraph-headings{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .project-info h4{
+        margin-left: 10px;
+    }
+    
+}

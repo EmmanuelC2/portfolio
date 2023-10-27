@@ -35,9 +35,9 @@ toggleArrow.addEventListener('click', () => {
 
     if(toggleArrow.classList.contains('active')){   
         toggleArrowImg = document.getElementById('toggle-arrow-image')
-        toggleArrowImg.src = "/images/rightArrow.png";
+        toggleArrowImg.src = "/dev/images/rightArrow.png";
     }else{
-        toggleArrowImg.src = "/images/leftArrow.png";
+        toggleArrowImg.src = "/dev/images/leftArrow.png";
     }
 
     toggleArrow.classList.toggle('active');

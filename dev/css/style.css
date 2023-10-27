@@ -1,17 +1,19 @@
 @font-face {
     font-family: TekturM;
-    src: url(fonts/Tektur-Medium.ttf);
+    src: url(/dev/css/fonts/Tektur-Medium.ttf);
 }
 
 html{
     height: 100%;
     min-height: 100%;
     scroll-padding-top:80px;
+    overflow-x:hidden;
 }
 
 body {
     background-color:black;
     margin:0%;
+    overflow-x:hidden;
 }
 
 /* Navigation Bar */
@@ -83,6 +85,7 @@ body {
 
 a{
     text-decoration: none;
+    color:white;
 }
 
 /* External Links Bar */
