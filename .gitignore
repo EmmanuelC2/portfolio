@@ -3,3 +3,4 @@ firebase.json
 firestore.indexes.json
 firestore.rules
 node_modules
+.firebase
