@@ -490,6 +490,11 @@ a{
 #contact-form textarea{
     width: 500px;
     height: 90%;
+    font-size: 17.5px;
+}
+
+#contact-form textarea::-webkit-input-placeholder{
+    text-align:center;
 }
 
 #contact-form input[type=submit] {
@@ -650,6 +655,11 @@ a{
     #contact-form textarea{
         width: 400px;
         height: 150px;
+        font-size: 17.5px;
+    }
+
+    #contact-form textarea::-webkit-input-placeholder{
+        text-align:center;
     }
 }
 
@@ -907,8 +917,12 @@ a{
     #contact-form textarea{
         width: 250px;
         height: 150px;
+        font-size: 17.5px;
     }
 
+    #contact-form textarea::-webkit-input-placeholder{
+        text-align:center;
+    }
     .content-container {
         margin-bottom:650px;
     }

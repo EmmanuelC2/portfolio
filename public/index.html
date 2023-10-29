@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
     <meta name="viewport" content="width=device-width">
     <title>Emmanuel Cardenas - Software Developer</title>
 </head>
@@ -1171,7 +1171,7 @@
             <p id="contact-p">Please fill out this form and click submit. I'll get back to you as soon as possible.
             </p>
 
-            <form id="contact-form">
+            <form id="contact-form" onsubmit="emailValidation();return false">
 
                 <label for="msgr-name">Name:</label>
                 <input type="text" id="msgr-name" name="name" required autocomplete="on">
@@ -1180,9 +1180,9 @@
                 <input type="text" id="email" name="email" required autocomplete="on">
 
                 <label for="msg">Message:</label>
-                <textarea id="msg" name="msg"></textarea>
+                <textarea maxlength="200" id="msg" name="msg" placeholder="Word limit 200!" required autocomplete="on"></textarea>
 
-                <input class="submit-button-gradient" type="submit" value="Submit">
+                <input id="submit-button" type="submit" value="Submit">
 
             </form>
         </section>

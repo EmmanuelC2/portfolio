@@ -226,3 +226,32 @@ function prevSlide2(){
 showSlide2(currentSlide2);
 showSlide1(currentSlide1);
 showSlide0(currentSlide0);
+
+const textAreaElement = document.getElementById('msg');
+function maxLength(txtArea){
+    if(!('maxLength' in txtArea)){
+        let max = textAreaElement.attributes.maxLength.value;
+        txtArea.onkeypress = function(){
+            if(this.value.length >= max) return false;
+        }
+    }
+}
+
+maxLength(document.getElementsById("msg"));
+
+
+const messengerEmail = document.getElementById("email");
+let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+let emailValidation = function(){
+    if(messengerEmail.value.match(validRegex)){
+        console.log("Email is correct send form data to cloud firestore");
+    }else{
+        let errorMsg = document.createElement("label");
+        let msg = document.createTextNode("Invalid Email!");
+        errorMsg.appendChild(msg);
+
+        errorMsg.style.top = "10px"; 
+        messengerEmail.appendChild(errorMsg);
+    }
+}
