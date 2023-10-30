@@ -47,15 +47,15 @@
 
     <div id="links-bar">
         <div id="toggle-link-bar">
-            <img id="toggle-arrow-image" src="/images/rightArrow.png">
+            <img id="toggle-arrow-image" src="/public/images/rightArrow.png">
         </div>
         <div id="links-container">
 
             <a href="https://github.com/EmmanuelC2" target="_blank">
-                <img id="github-logo" src="/images/github-mark.png" alt="Github Logo">
+                <img id="github-logo" src="/public/images/github-mark.png" alt="Github Logo">
             </a>
             <a href="https://www.linkedin.com/in/emmanuel-cardenas-a1670b262/" target="_blank">
-                <img id="linkedin-logo" src="/images/linkedIn-mark.png">
+                <img id="linkedin-logo" src="/public/images/linkedIn-mark.png">
             </a>
         </div>
     </div>
@@ -89,7 +89,7 @@
             <div id="education-container">
 
                 <div id="cos-container">
-                    <img src="/images/cos.png">
+                    <img src="/public/images/cos.png">
                     <p>
                         I began my academic journey at my hometown community
                         college, the College of the Sequoias, where I completed
@@ -221,11 +221,11 @@
                     </div>
 
                     <div id="next-slide" onclick="cosNextSlide0();">
-                        <img id="nextS-img" src="/images/rightArrow.png">
+                        <img id="nextS-img" src="/public/images/rightArrow.png">
                     </div>
 
                     <div id="prev-slide" onclick="cosPrevSlide0();">
-                        <img id="prevS-img" src="/images/leftArrow.png">
+                        <img id="prevS-img" src="/public/images/leftArrow.png">
                     </div>
 
                 </div>
@@ -352,11 +352,11 @@
                     </div>
 
                     <div id="next-slide" onclick="cosNextSlide1();">
-                        <img id="nextS-img" src="/images/rightArrow.png">
+                        <img id="nextS-img" src="/public/images/rightArrow.png">
                     </div>
 
                     <div id="prev-slide" onclick="cosPrevSlide1();">
-                        <img id="prevS-img" src="/images/leftArrow.png">
+                        <img id="prevS-img" src="/public/images/leftArrow.png">
                     </div>
 
                 </div>
@@ -507,17 +507,17 @@
                     </div>
 
                     <div id="next-slide" onclick="cosNextSlide2();">
-                        <img id="nextS-img" src="/images/rightArrow.png">
+                        <img id="nextS-img" src="/public/images/rightArrow.png">
                     </div>
 
                     <div id="prev-slide" onclick="cosPrevSlide2();">
-                        <img id="prevS-img" src="/images/leftArrow.png">
+                        <img id="prevS-img" src="/public/images/leftArrow.png">
                     </div>
 
                 </div>
 
                 <div id="fsu-container">
-                    <img src="/images/fsu.png">
+                    <img src="/public/images/fsu.png">
                     <p>
                         Subsequently, I continued my pursuit of knowledge at
                         California State University, Fresno, ultimately earning
@@ -709,11 +709,11 @@
                     </div>
 
                     <div id="next-slide" onclick="nextSlide0();">
-                        <img id="nextS-img" src="/images/rightArrow.png">
+                        <img id="nextS-img" src="/public/images/rightArrow.png">
                     </div>
 
                     <div id="prev-slide" onclick="prevSlide0();">
-                        <img id="prevS-img" src="/images/leftArrow.png">
+                        <img id="prevS-img" src="/public/images/leftArrow.png">
                     </div>
 
                 </div>
@@ -906,11 +906,11 @@
                     </div>
 
                     <div id="next-slide" onclick="nextSlide1();">
-                        <img id="nextS-img" src="/images/rightArrow.png">
+                        <img id="nextS-img" src="/public/images/rightArrow.png">
                     </div>
 
                     <div id="prev-slide" onclick="prevSlide1();">
-                        <img id="prevS-img" src="/images/leftArrow.png">
+                        <img id="prevS-img" src="/public/images/leftArrow.png">
                     </div>
 
                 </div>
@@ -1131,11 +1131,11 @@
                     </div>
 
                     <div id="next-slide" onclick="nextSlide2();">
-                        <img id="nextS-img" src="/images/rightArrow.png">
+                        <img id="nextS-img" src="/public/images/rightArrow.png">
                     </div>
 
                     <div id="prev-slide" onclick="prevSlide2();">
-                        <img id="prevS-img" src="/images/leftArrow.png">
+                        <img id="prevS-img" src="/public/images/leftArrow.png">
                     </div>
 
                 </div>
@@ -1149,15 +1149,15 @@
             <h1>Projects</h1>
 
             <div class="project-container">
-                <a href="/pages/imitation.html" class="project-links">
-                    <img src="/images/imitation.gif" class="project-images">
+                <a href="/public/pages/imitation.html" class="project-links">
+                    <img src="/public/images/imitation.gif" class="project-images">
                     <h2>Imitation</h2>
                 </a>
             </div>
 
             <div class="project-container">
-                <a href="/pages/memory.html" class="project-links">
-                    <img src="/images/memory.gif" class="project-images">
+                <a href="/public/pages/memory.html" class="project-links">
+                    <img src="/public/images/memory.gif" class="project-images">
                     <h2>Memory</h2>
                 </a>
             </div>
@@ -1168,15 +1168,14 @@
 
             <h1>Contact</h1>
 
-            <p id="contact-p">Please fill out this form and click submit. I'll get back to you as soon as possible.
-            </p>
+            <p id="contact-p">To get a hold of me please fill out this form and click submit.</p>
 
             <form id="contact-form" onsubmit="emailValidation();return false">
 
                 <label for="msgr-name">Name:</label>
                 <input type="text" id="msgr-name" name="name" required autocomplete="on">
 
-                <label for="email">Email:</label>
+                <label for="email" id="email-label">Email:</label>
                 <input type="text" id="email" name="email" required autocomplete="on">
 
                 <label for="msg">Message:</label>
@@ -1189,8 +1188,8 @@
 
     </div>
 
-    <script src="/js/main.js"></script>
-    <script type="module" src="/js/firebase.js"></script>
+    <script src="/public/js/main.js"></script>
+    <script type="module" src="/public/js/firebase.js"></script>
     
 </body>
 
