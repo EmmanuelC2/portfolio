@@ -239,20 +239,24 @@ function maxLength(txtArea) {
 
 maxLength(document.getElementById("msg"));
 
+import { db } from "./firebase.js"; 
 
 const messengerEmail = document.getElementById("email");
 const emailLabel = document.getElementById("email-label");
-const parentNode = document.getElementById("contact-form");
+const messengerName = document.getElementById("msgr-name");
+const messengerMsg = document.getElementById("msg");
+
 let emailErrorLabel = "";
 let errorCheck = false;
 
 let validRegex = /\S+@\S+\.\S+/;
 
 let emailValidation = function () {
+
+    console.log(messengerName, " ", messengerEmail, " ", messengerMsg);
+    
     if (messengerEmail.value.match(validRegex)) {
-        document.getElementById("msgr-name").value = "";
-        messengerEmail.value = "";
-        document.getElementById("msg").value = "";
+        contactForm.reset();
         document.getElementById("contact-p").style.color = "lightgreen";
         document.getElementById("contact-p").textContent = "The email was sent. I will get back to you as soon as possible.";
         
@@ -266,6 +270,22 @@ let emailValidation = function () {
         }, 10000);
 
         console.log("Email is correct send form data to cloud firestore");
+
+        db.collectionReference("mail").add({
+            from: messengerEmail.value,
+            to: 'portfolio.ec.mail@gmail.com',
+            message: {
+                subject: 'Possible employment from: ' + messengerName.value,
+                text: messengerMsg.value
+            }
+        })
+        .then(()=>{
+            console.log("Docuemnt succesfully written");
+        })
+        .catch((error)=>{
+            console.error("Error writing document: ", error);
+        });
+
     } else {
         if (!errorCheck) {
 
@@ -275,8 +295,13 @@ let emailValidation = function () {
             errorMsg.style.color = "FireBrick";
             errorMsg.style.marginBottom = "-25px";
             errorMsg.setAttribute("id", "email-error-msg");
-            parentNode.insertBefore(errorMsg, emailLabel);
+            contactForm.insertBefore(errorMsg, emailLabel);
             errorCheck = true;
         }
     }
 }
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    emailValidation();
+});
