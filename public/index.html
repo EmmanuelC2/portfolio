@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width">
     <title>Emmanuel Cardenas - Software Developer</title>
+    <!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
 </head>
 
 <body>
@@ -1170,27 +1171,39 @@
 
             <p id="contact-p">To get a hold of me please fill out this form and click submit.</p>
 
-            <form id="contact-form">
+            <form method="POST" id="contact-form">
 
                 <label for="msgr-name">Name:</label>
-                <input type="text" id="msgr-name" name="name" required autocomplete="on">
-
+                <input type="text" id="from-name" name="from_name" required autocomplete="on">
+        
                 <label for="email" id="email-label">Email:</label>
-                <input type="text" id="email" name="email" required autocomplete="on">
-
+                <input type="text" id="from-email" name="from_email" required autocomplete="on">
+        
                 <label for="msg">Message:</label>
-                <textarea maxlength="200" id="msg" name="msg" placeholder="Word limit 200!" required autocomplete="on"></textarea>
+                <textarea maxlength="200" id="message" name="message" placeholder="Word limit 200!" required autocomplete="on"></textarea><br/>
+        
+                <div id="recaptcha-container"></div><br/>
+                <!--<div id="g-recaptcha" data-sitekey="6Lek8wApAAAAAP8NEqzEQMy9-88g5kCmFVjAt29E"></div><br/>-->
+
+                <div id="modal-alert">
+                    <div id="modal-content">
+                        <span id="close">&times;</span>
+                        <p id="modal-p">Please complete the reCAPTCHA challenge!</p>
+                    </div>
+                </div>
 
                 <input id="submit-button" type="submit" value="Submit">
-
+        
             </form>
+            
         </section>
 
     </div>
 
     <script type="module" src="/js/firebase.js"></script>
-    <script type="module" src="/js/main.js"></script>
-    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     
 </body>
 

@@ -227,7 +227,7 @@ showSlide2(currentSlide2);
 showSlide1(currentSlide1);
 showSlide0(currentSlide0);
 
-const textAreaElement = document.getElementById('msg');
+const textAreaElement = document.getElementById('message');
 function maxLength(txtArea) {
     if (!('maxLength' in txtArea)) {
         let max = textAreaElement.attributes.maxLength.value;
@@ -237,58 +237,49 @@ function maxLength(txtArea) {
     }
 }
 
-maxLength(document.getElementById("msg"));
+maxLength(document.getElementById("message"));
 
-import { db } from "./firebase.js"; 
+emailjs.init('5-N9q_DyZQPA2Pnip');
+const messengerEmail = document.getElementById("from-email");
+const messengerName = document.getElementById("from-name");
+const messengerMsg = document.getElementById("message");
 
-const messengerEmail = document.getElementById("email");
 const emailLabel = document.getElementById("email-label");
-const messengerName = document.getElementById("msgr-name");
-const messengerMsg = document.getElementById("msg");
-
 let emailErrorLabel = "";
 let errorCheck = false;
+let alertModal = document.getElementById("modal-alert");
+let modalContent = document.getElementById("modal-content");
+let modalSpan = document.getElementById("close");
+let modalParagraph = document.getElementById("modal-p");
 
 let validRegex = /\S+@\S+\.\S+/;
 
+var reCaptchaToken = '';
+
 let emailValidation = function () {
 
-    console.log(messengerName, " ", messengerEmail, " ", messengerMsg);
-    
     if (messengerEmail.value.match(validRegex)) {
-        contactForm.reset();
-        document.getElementById("contact-p").style.color = "lightgreen";
-        document.getElementById("contact-p").textContent = "The email was sent. I will get back to you as soon as possible.";
-        
-        if(errorCheck){
-            emailErrorLabel.remove();
-            errorCheck = false;
-        }
-        setTimeout(()=> {
-            document.getElementById("contact-p").style.color = "white";
-            document.getElementById("contact-p").textContent = "To get a hold of me please fill out this form and click submit.";
-        }, 10000);
 
-        console.log("Email is correct send form data to cloud firestore");
+        if (reCaptchaToken != '') {
+            document.getElementById("contact-p").style.color = "lightgreen";
+            document.getElementById("contact-p").textContent = "The email was sent. I will get back to you as soon as possible.";
 
-        db.collectionReference("mail").add({
-            from: messengerEmail.value,
-            to: 'portfolio.ec.mail@gmail.com',
-            message: {
-                subject: 'Possible employment from: ' + messengerName.value,
-                text: messengerMsg.value
+            if (errorCheck) {
+                emailErrorLabel.remove();
+                errorCheck = false;
             }
-        })
-        .then(()=>{
-            console.log("Docuemnt succesfully written");
-        })
-        .catch((error)=>{
-            console.error("Error writing document: ", error);
-        });
+            setTimeout(() => {
+                document.getElementById("contact-p").style.color = "white";
+                document.getElementById("contact-p").textContent = "To get a hold of me please fill out this form and click submit.";
+            }, 10000);
+
+            return {isValid: true, reason: 'none'};
+        } else {
+            return {isValid: false, reason: 'recaptchaFailed'};
+        }
 
     } else {
         if (!errorCheck) {
-
             let errorMsg = document.createElement("label");
             emailErrorLabel = errorMsg;
             errorMsg.innerHTML = "Invalid Email Format!";
@@ -298,10 +289,53 @@ let emailValidation = function () {
             contactForm.insertBefore(errorMsg, emailLabel);
             errorCheck = true;
         }
+
+        return {isValid: false, reason: 'emailFailed'};
+
     }
 }
 
+var verifyCallback = function (res) {
+    reCaptchaToken = res;
+}
+
+var onloadCallback = function () {
+    grecaptcha.render('recaptcha-container', {
+        'sitekey': '6Lek8wApAAAAAP8NEqzEQMy9-88g5kCmFVjAt29E',
+        'callback': verifyCallback,
+        'theme': 'dark'
+    });
+};
+
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    emailValidation();
+    let emailCheck = emailValidation()
+    if (emailCheck.isValid) {
+        console.log(reCaptchaToken);
+        emailjs.send("service_jjw8vu9", "template_4uggx9k", { message: messengerMsg.value, from_email: messengerEmail.value, from_name: messengerName.value, 'g-recaptcha-response': reCaptchaToken })
+            .then((res) => {
+                console.log("Email Status: ", res.status, "; ", res.text);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        reCaptchaToken = '';
+        contactForm.reset();
+    }else{
+        if(emailCheck.reason == "recaptchaFailed"){
+            if(errorCheck){emailErrorLabel.remove()}
+            alertModal.style.display = "flex";
+        }
+        
+    }
 });
+
+modalSpan.onclick = function(){
+    alertModal.style.display = "none";
+}
+
+window.onclick = function(event){
+    if(event.target != alertModal && event.target != modalContent && event.target != modalParagraph){
+        alertModal.style.display = "none";
+    }
+}
