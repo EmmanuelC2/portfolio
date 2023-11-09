@@ -7,13 +7,13 @@ html{
     height: 100%;
     min-height: 100%;
     scroll-padding-top:80px;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 body {
     background-color:black;
     margin:0%;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 /* Navigation Bar */
@@ -196,18 +196,19 @@ a{
 
 #aboutme{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center; 
+    justify-content: space-evenly; 
+    margin-top:200px;
 }
 
 #aboutme-container{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
+    flex-direction:column;
+    align-items:center;
+    justify-content:center; 
     padding:50px;
-    width:80%;
+    width:50%;
     border-bottom: 1px solid lightgray;
 }
 
@@ -514,7 +515,7 @@ a{
     opacity:1;
 }
 
-#modal-alert{
+#alert-modal{
     display: none;
     position:fixed;
     z-index:1;
@@ -525,7 +526,29 @@ a{
     background-color: firebrick;
     border:1px solid white;
 }
-#modal-content{
+#email-modal-success{
+    display: none;
+    position:fixed;
+    z-index:1;
+    width: 50%;
+    height: 10%;
+    overflow:none;
+    top: 40%;
+    background-color: lightgreen;
+    border:1px solid white;
+}
+#email-modal-failed{
+    display: none;
+    position:fixed;
+    z-index:1;
+    width: 50%;
+    height: 10%;
+    overflow:none;
+    top: 40%;
+    background-color: firebrick;
+    border:1px solid white;
+}
+.modal-content{
     display: inherit;
     color: black;
     margin: auto;
@@ -535,20 +558,20 @@ a{
     align-items: center;
     flex-direction: row-reverse;
 }
-#close{
+.close{
     color: black;
     float:right;
     font-size: 28px;
     font-weight: bold;
 }
-#close:hover,
-#close:focus{
+.close:hover,
+.close:focus{
     color:grey;
     text-decoration: none;
     cursor: pointer;
 }
 
-#modal-content p{
+.modal-content p{
     color:white;
 }
 
@@ -596,7 +619,12 @@ a{
 
     /* About Me Section */
 
-    #aboutme-container{width:85%;}
+    #aboutme-container{width:80%;}
+
+    #the-face{
+        width:80%;
+        height: 80%;
+    }
 
     /* Education Section */
     #cos-container{width:85%;}
@@ -785,9 +813,14 @@ a{
     }
 
     /* About Me Section */
-
+    #aboutme{
+        flex-direction: column;
+    }
     #aboutme-container{width:100%;}
-
+    #the-face{
+        width: 60%;
+        height: 60%;
+    }
     /* Education Section */
     #cos-container{
         width:100%; 
@@ -963,5 +996,15 @@ a{
     }
     .content-container {
         margin-bottom:650px;
+    }
+
+    #alert-modal{
+        height: 30%;
+    }
+    #email-modal-success{
+        height: 30%;
+    }
+    #email-modal-failed{
+        height: 30%;
     }
 }

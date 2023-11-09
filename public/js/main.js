@@ -240,6 +240,7 @@ function maxLength(txtArea) {
 maxLength(document.getElementById("message"));
 
 emailjs.init('5-N9q_DyZQPA2Pnip');
+
 const messengerEmail = document.getElementById("from-email");
 const messengerName = document.getElementById("from-name");
 const messengerMsg = document.getElementById("message");
@@ -247,10 +248,21 @@ const messengerMsg = document.getElementById("message");
 const emailLabel = document.getElementById("email-label");
 let emailErrorLabel = "";
 let errorCheck = false;
-let alertModal = document.getElementById("modal-alert");
-let modalContent = document.getElementById("modal-content");
-let modalSpan = document.getElementById("close");
-let modalParagraph = document.getElementById("modal-p");
+
+let alertModal = document.getElementById("alert-modal");
+let alertModalContent = document.getElementById("alert-modal-content");
+let alertModalSpan = document.getElementById("close-alert-modal");
+let alertModalParagraph = document.getElementById("alert-modal-p");
+
+let emailModal = document.getElementById("email-modal-success");
+let emailModalContent = document.getElementById("email-modal-content");
+let emailModalSpan = document.getElementById("close-email-modal");
+let emailModalParagraph = document.getElementById("email-modal-p");
+
+let emailModalFailed = document.getElementById("email-modal-failed");
+let emailModalContentFailed = document.getElementById("email-modal-content-failed");
+let emailModalSpanFailed = document.getElementById("close-email-modal-failed");
+let emailModalParagraphFailed = document.getElementById("email-modal-p-failed");
 
 let validRegex = /\S+@\S+\.\S+/;
 
@@ -261,36 +273,25 @@ let emailValidation = function () {
     if (messengerEmail.value.match(validRegex)) {
 
         if (reCaptchaToken != '') {
-            document.getElementById("contact-p").style.color = "lightgreen";
-            document.getElementById("contact-p").textContent = "The email was sent. I will get back to you as soon as possible.";
-
-            if (errorCheck) {
-                emailErrorLabel.remove();
-                errorCheck = false;
-            }
-            setTimeout(() => {
-                document.getElementById("contact-p").style.color = "white";
-                document.getElementById("contact-p").textContent = "To get a hold of me please fill out this form and click submit.";
-            }, 10000);
-
-            return {isValid: true, reason: 'none'};
+            return { isValid: true, reason: 'success' };
         } else {
-            return {isValid: false, reason: 'recaptchaFailed'};
+            return { isValid: false, reason: 'recaptchaFailed' };
         }
 
     } else {
         if (!errorCheck) {
             let errorMsg = document.createElement("label");
-            emailErrorLabel = errorMsg;
             errorMsg.innerHTML = "Invalid Email Format!";
             errorMsg.style.color = "FireBrick";
             errorMsg.style.marginBottom = "-25px";
             errorMsg.setAttribute("id", "email-error-msg");
+            errorMsg.setAttribute("for", "from-email");
             contactForm.insertBefore(errorMsg, emailLabel);
             errorCheck = true;
+            emailErrorLabel = errorMsg;
         }
 
-        return {isValid: false, reason: 'emailFailed'};
+        return { isValid: false, reason: 'emailFailed' };
 
     }
 }
@@ -311,31 +312,45 @@ contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let emailCheck = emailValidation()
     if (emailCheck.isValid) {
-        console.log(reCaptchaToken);
         emailjs.send("service_jjw8vu9", "template_4uggx9k", { message: messengerMsg.value, from_email: messengerEmail.value, from_name: messengerName.value, 'g-recaptcha-response': reCaptchaToken })
             .then((res) => {
-                console.log("Email Status: ", res.status, "; ", res.text);
+                emailModal.style.display = "flex";
             })
             .catch((err) => {
-                console.log(err);
+                emailModalFailed.style.display = "flex";
             })
         reCaptchaToken = '';
         contactForm.reset();
-    }else{
-        if(emailCheck.reason == "recaptchaFailed"){
-            if(errorCheck){emailErrorLabel.remove()}
+    } else {
+        if (emailCheck.reason == "recaptchaFailed") {
+            if (errorCheck) { emailErrorLabel.remove(); errorCheck = false; }
             alertModal.style.display = "flex";
         }
-        
     }
 });
 
-modalSpan.onclick = function(){
+alertModalSpan.onclick = function () {
     alertModal.style.display = "none";
 }
+emailModalSpan.onclick = function () {
+    emailModal.style.display = "none";
+}
+emailModalSpanFailed.onclick = function () {
+    emailModalFailed.style.display = "none";
+}
 
-window.onclick = function(event){
-    if(event.target != alertModal && event.target != modalContent && event.target != modalParagraph){
+window.onclick = function (event) {
+
+    if (event.target != alertModal && event.target != alertModalContent && event.target != alertModalParagraph) {
         alertModal.style.display = "none";
     }
+
+    if (event.target != emailModal && event.target != emailModalContent && event.target != emailModalParagraph) {
+        emailModal.style.display = "none";
+    }
+
+    if (event.target != emailModalFailed && event.target != emailModalContentFailed && event.target != emailModalParagraphFailed) {
+        emailModalFailed.style.display = "none";
+    }
+
 }
