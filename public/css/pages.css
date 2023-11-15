@@ -119,7 +119,7 @@ a{
     align-items: flex-start;
 }
 
-#embedded-video{
+.embedded-video{
     width:800px;
     height:550px;
 }
@@ -182,7 +182,7 @@ a{
     }
 
     /* Project Section */
-    #embedded-video{
+    .embedded-video{
         width:600px;
         height:380px;
     }
@@ -266,7 +266,7 @@ a{
 
     /* Project Section */
     
-    #embedded-video{
+    .embedded-video{
         width:225px;
         height:500px;
     }
