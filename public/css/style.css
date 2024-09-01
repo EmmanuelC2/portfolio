@@ -185,7 +185,7 @@ a{
     height:100%;
     text-align: center;
     flex:1;
-    margin-bottom:850px;
+    margin-bottom:600px;
 }
 
 .content-container h1 {
@@ -426,6 +426,15 @@ a{
 }
 
 /* Projects Section*/
+
+.project-heading{
+    display:grid;
+    margin-top: 100px;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content: start;
+    width:80%;
+}
 
 .project-container{
     position: relative;
